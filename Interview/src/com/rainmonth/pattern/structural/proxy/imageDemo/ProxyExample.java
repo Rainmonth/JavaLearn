@@ -1,4 +1,4 @@
-package com.rainmonth.pattern.structural.proxy;
+package com.rainmonth.pattern.structural.proxy.imageDemo;
 
 class ProxyExample {
     public static void main(String[] args) {

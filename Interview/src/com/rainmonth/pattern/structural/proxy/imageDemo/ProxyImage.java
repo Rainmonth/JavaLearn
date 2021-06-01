@@ -1,4 +1,4 @@
-package com.rainmonth.pattern.structural.proxy;
+package com.rainmonth.pattern.structural.proxy.imageDemo;
 
 class ProxyImage implements Image {
 	private String filename;

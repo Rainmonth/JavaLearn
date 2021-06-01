@@ -1,4 +1,4 @@
-package com.rainmonth.pattern.structural.proxy;
+package com.rainmonth.pattern.structural.proxy.imageDemo;
 
 class RealImage implements Image {
 	private String filename;
