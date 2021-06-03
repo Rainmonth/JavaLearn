@@ -1,5 +1,6 @@
 package com.rainmonth.pattern.structural.proxy.startDemo;
 
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.*;
 
 import java.lang.reflect.Method;
@@ -54,7 +55,7 @@ class ProxyCallbackFilter implements CallbackFilter {
         if ("select".equals(method.getName())) {
             return 0;// 对应于Enhancer的Callbacks的索引值为0
         }
-        return 1;// 对应于Enhancer的Callbacks的索引值为0
+        return 1;// 对应于Enhancer的Callbacks的索引值为1
     }
 }
 
@@ -73,13 +74,14 @@ public class UserDaoDemo  {
         // 设置回调（即MethodInterceptor的实现类）
         enhancer.setCallbacks(new Callback[]{selectProxy, updateProxy});
         enhancer.setCallbackFilter(callbackFilter);
-        // 设置
+        // 设置不代理构造函数里面的方法
         enhancer.setInterceptDuringConstruction(false);
         return enhancer.create();
     }
 
 
     public static void main(String[] args) {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "Interview/target/cglib");
         UserDao helloObj = (UserDao) new UserDaoDemo().getTarget();
         helloObj.update();
         helloObj.select();
