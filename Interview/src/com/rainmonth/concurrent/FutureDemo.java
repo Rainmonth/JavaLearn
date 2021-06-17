@@ -19,12 +19,22 @@ public class FutureDemo {
 
         SearchTextImpl searchText = new SearchTextImpl();
 
+        long startTime = System.currentTimeMillis();
+        System.out.println("startTime:" + startTime);
         Future<String> future = executor.submit(new Callable<String>() {
             @Override
             public String call() throws Exception {
                 return searchText.searchText("a");
             }
         });
+
+//        FutureTask<String> task = new FutureTask<String>(new Callable<String>() {
+//            @Override
+//            public String call() throws Exception {
+//                return searchText.searchText("a");
+//            }
+//        });
+//        executor.execute(task);
         searchText.doSomethingElse();
 
         try {
@@ -33,6 +43,8 @@ public class FutureDemo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("endTime:" + endTime + ", cost:" + (endTime - startTime));
     }
 }
 
@@ -45,6 +57,7 @@ class SearchTextImpl implements ISearchText {
     @Override
     public String searchText(String searchKey) {
         try {
+            System.out.println("sleep for 3 seconds...");
             Thread.sleep(3000);
             if (searchKey != null) {
                 if (searchKey.startsWith("a")) {
@@ -62,5 +75,14 @@ class SearchTextImpl implements ISearchText {
 
     public void doSomethingElse() {
         System.out.println("doSomethingElse: reading books while waiting search result");
+//        for (int i = 0;i<10000;i++) {
+//            System.out.println(i);
+//        }
+        try {
+            System.out.println("sleep for 1 second...");
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
