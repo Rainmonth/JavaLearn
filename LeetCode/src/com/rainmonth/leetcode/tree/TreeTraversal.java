@@ -5,7 +5,7 @@ package com.rainmonth.leetcode.tree;
  */
 public class TreeTraversal {
     public static void main(String[] args) {
-        Node tree = TreeHelper.generateTree();
+        Node tree = NodeHelper.generateTree();
 
         TreeManager treeManager = new TreeManager();
         System.out.println("--先序（根）遍历--");

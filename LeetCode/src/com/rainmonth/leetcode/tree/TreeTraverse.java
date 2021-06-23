@@ -2,7 +2,7 @@ package com.rainmonth.leetcode.tree;
 
 public class TreeTraverse {
     public static void main(String[] args) {
-        Node root = TreeHelper.generateTree();
+        Node root = NodeHelper.generateTree();
 
         System.out.println("先根遍历（递归法）：");
         firstRootTraverse(root);
