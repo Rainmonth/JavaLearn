@@ -1,13 +1,13 @@
 package com.rainmonth.leetcode.tree.mothod;
 
-import com.rainmonth.leetcode.tree.Node;
+import com.rainmonth.leetcode.helper.TreeNode;
 
 /**
  * 中根遍历 递归 实现
  */
-public class MiddleRootRecursionTraversal implements TraversalMethod {
+public class MiddleRootRecursionTraversal implements TraversalMethod<String> {
     @Override
-    public void treeTraversal(Node root) {
+    public void treeTraversal(TreeNode<String> root) {
         if (root == null) {
             return;
         }

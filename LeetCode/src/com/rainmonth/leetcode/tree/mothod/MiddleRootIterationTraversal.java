@@ -1,6 +1,6 @@
 package com.rainmonth.leetcode.tree.mothod;
 
-import com.rainmonth.leetcode.tree.Node;
+import com.rainmonth.leetcode.helper.TreeNode;
 
 import java.util.Stack;
 
@@ -18,10 +18,10 @@ import java.util.Stack;
  * 2.若栈非空，则退栈，访问出栈节点，并进入其右子树。
  * 3.以2中的右子树的根节点作为根节点，开始迭代
  */
-public class MiddleRootIterationTraversal implements TraversalMethod {
+public class MiddleRootIterationTraversal implements TraversalMethod<String> {
     @Override
-    public void treeTraversal(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public void treeTraversal(TreeNode<String> root) {
+        Stack<TreeNode<String>> stack = new Stack<>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.push(root);

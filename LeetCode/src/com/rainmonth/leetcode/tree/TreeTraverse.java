@@ -1,8 +1,11 @@
 package com.rainmonth.leetcode.tree;
 
+import com.rainmonth.leetcode.helper.NodeHelper;
+import com.rainmonth.leetcode.helper.TreeNode;
+
 public class TreeTraverse {
     public static void main(String[] args) {
-        Node root = NodeHelper.generateTree();
+        TreeNode root = NodeHelper.generateTree();
 
         System.out.println("先根遍历（递归法）：");
         firstRootTraverse(root);
@@ -23,7 +26,7 @@ public class TreeTraverse {
     /**
      * 先根遍历（递归法），对节点的访问在<b>最先</b>
      */
-    public static void firstRootTraverse(Node root) {
+    public static void firstRootTraverse(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -39,7 +42,7 @@ public class TreeTraverse {
     /**
      * 中根遍历（递归法），对节点的访问在<b>中间</b>
      */
-    public static void middleRootTraverse(Node root) {
+    public static void middleRootTraverse(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -51,7 +54,7 @@ public class TreeTraverse {
     /**
      * 后根遍历（递归法），对节点的访问在<b>最后</b
      */
-    public static void lastRootTraverse(Node root) {
+    public static void lastRootTraverse(TreeNode root) {
         if (root == null) {
             return;
         }

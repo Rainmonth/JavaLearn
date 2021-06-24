@@ -1,6 +1,6 @@
 package com.rainmonth.leetcode.tree.mothod;
 
-import com.rainmonth.leetcode.tree.Node;
+import com.rainmonth.leetcode.helper.TreeNode;
 
 import java.util.Stack;
 
@@ -14,13 +14,13 @@ import java.util.Stack;
  * \  /    /   \
  * 4      J  H   K     I
  */
-public class LastRootTwoStackTraversal implements TraversalMethod {
+public class LastRootTwoStackTraversal implements TraversalMethod<String> {
 
     @Override
-    public void treeTraversal(Node root) {
-        Stack<Node> stack = new Stack<>();
-        Stack<Node> temp = new Stack<>();
-        Node node = root;
+    public void treeTraversal(TreeNode<String> root) {
+        Stack<TreeNode<String>> stack = new Stack<>();
+        Stack<TreeNode<String>> temp = new Stack<>();
+        TreeNode<String> node = root;
         while (node != null || stack.size() > 0) {
             // 把当前节点和其右侧子结点推入栈
             while (node != null) {

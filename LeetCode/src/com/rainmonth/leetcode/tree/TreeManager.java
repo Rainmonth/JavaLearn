@@ -1,5 +1,6 @@
 package com.rainmonth.leetcode.tree;
 
+import com.rainmonth.leetcode.helper.TreeNode;
 import com.rainmonth.leetcode.tree.mothod.*;
 
 /**
@@ -45,7 +46,7 @@ public class TreeManager {
         }
     }
 
-    public void treeTraversal(Node root) {
+    public void treeTraversal(TreeNode<String> root) {
         if (traversalMethod != null) {
             traversalMethod.traversalIntro();
             traversalMethod.treeTraversal(root);

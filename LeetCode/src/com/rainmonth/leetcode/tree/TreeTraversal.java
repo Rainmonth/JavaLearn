@@ -1,11 +1,14 @@
 package com.rainmonth.leetcode.tree;
 
+import com.rainmonth.leetcode.helper.NodeHelper;
+import com.rainmonth.leetcode.helper.TreeNode;
+
 /**
  * 树遍历
  */
 public class TreeTraversal {
     public static void main(String[] args) {
-        Node tree = NodeHelper.generateTree();
+        TreeNode<String> tree = NodeHelper.generateTree();
 
         TreeManager treeManager = new TreeManager();
         System.out.println("--先序（根）遍历--");
