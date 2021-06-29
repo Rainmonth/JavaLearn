@@ -1,14 +1,14 @@
-package com.rainmonth.leetcode;
+package com.rainmonth.leetcode.list;
 
 import com.rainmonth.leetcode.helper.ListNode;
 import com.rainmonth.leetcode.helper.NodeHelper;
 
 /**
- * 链表合并
+ * 链表合并  合并两个有序链表
  * @author randy
  * @date 2021/6/23 1:17 下午
  */
-public class NodeListMerge {
+public class No21 {
     public static void main(String[] args) {
         ListNode<Integer> root1 = NodeHelper.generateSortedList(10, 10, 10);
         NodeHelper.printRightNodeList(root1);
