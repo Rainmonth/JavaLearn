@@ -45,12 +45,14 @@ public class NodeHelper {
     public static ListNode<Integer> generateSortedList(int base, int num, int seed) {
         Random random = new Random();
         ListNode<Integer> head = new ListNode<>(base);
+        head.setIndex(0);
         ListNode<Integer> temp = head;
 //        System.out.print(temp.data + " ");
         for (int i = 0; i < num - 1; i++) {
             int data = random.nextInt(seed);
 //            System.out.print(data + " ");
             temp.next = new ListNode<>(temp.data + data);
+            temp.next.setIndex(i + 1);
             temp = temp.next;
         }
 
@@ -68,6 +70,24 @@ public class NodeHelper {
             System.out.print(headNode.data);
             while (headNode.next != null) {
                 System.out.print(" " + headNode.next.data);
+                headNode = headNode.next;
+            }
+            System.out.print("]");
+            System.out.println();
+        }
+    }
+
+    /**
+     * 打印链表
+     * @param headNode 链表头结点
+     */
+    public static void printRightNodeListWithIndex(ListNode<Integer> headNode) {
+        System.out.println();
+        if (headNode != null) {
+            System.out.print("生成的链表为：[");
+            System.out.print("[" + headNode.data + ", " + headNode.index + "]");
+            while (headNode.next != null) {
+                System.out.print(" [" + headNode.next.data + ", " + headNode.next.index + "]");
                 headNode = headNode.next;
             }
             System.out.print("]");
