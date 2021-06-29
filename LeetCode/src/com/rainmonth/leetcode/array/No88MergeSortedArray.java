@@ -1,4 +1,4 @@
-package com.rainmonth.leetcode;
+package com.rainmonth.leetcode.array;
 
 /**
  * 合并有序数组
