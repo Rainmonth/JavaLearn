@@ -5,8 +5,11 @@ import com.rainmonth.pattern.behavioral.command.command.Command;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 控制终端
+ */
 public class SimpleRemoteControl {
-    private List<Command> commands;
+    private final List<Command> commands;
 
     public SimpleRemoteControl() {
         commands = new ArrayList<Command>();
@@ -19,8 +22,8 @@ public class SimpleRemoteControl {
     public void buttonWasPressed(int index) {
         commands.get(index).attack();
     }
-    
-    public int getCommandsSize(){
+
+    public int getCommandsSize() {
         return commands.size();
     }
 
@@ -35,6 +38,4 @@ public class SimpleRemoteControl {
         }
         return stringBuff.toString();
     }
-    
-
 }
