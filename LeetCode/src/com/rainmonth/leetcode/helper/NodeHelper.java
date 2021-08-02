@@ -6,11 +6,11 @@ public class NodeHelper {
     /**
      * <p><code>
      * 1            A
-     *            /   \
+     * /   \
      * 2         C      B
-     *         / \     / \
+     * / \     / \
      * 3     E    D   F   G
-     *        \  /    /   \
+     * \  /    /   \
      * 4      J  H   K     I
      * </code>
      *
@@ -37,8 +37,9 @@ public class NodeHelper {
 
     /**
      * 生成有序链表
+     *
      * @param base 链表头结点的基础值
-     * @param num 链表的长度
+     * @param num  链表的长度
      * @param seed 随机值得种子
      * @return 链表头结点
      */
@@ -60,7 +61,33 @@ public class NodeHelper {
     }
 
     /**
+     * 生成随机链表
+     *
+     * @param base 链表头结点的基础值
+     * @param num  链表的长度
+     * @param seed 随机值得种子
+     * @return 链表头结点
+     */
+    public static ListNode<Integer> generateList(int base, int num, int seed) {
+        Random random = new Random();
+        ListNode<Integer> head = new ListNode<>(base);
+        head.setIndex(0);
+        ListNode<Integer> temp = head;
+//        System.out.print(temp.data + " ");
+        for (int i = 0; i < num - 1; i++) {
+            int data = random.nextInt(seed);
+//            System.out.print(data + " ");
+            temp.next = new ListNode<>(data);
+            temp.next.setIndex(i + 1);
+            temp = temp.next;
+        }
+
+        return head;
+    }
+
+    /**
      * 打印链表
+     *
      * @param headNode 链表头结点
      */
     public static void printRightNodeList(ListNode<Integer> headNode) {
@@ -79,6 +106,7 @@ public class NodeHelper {
 
     /**
      * 打印链表
+     *
      * @param headNode 链表头结点
      */
     public static void printRightNodeListWithIndex(ListNode<Integer> headNode) {
