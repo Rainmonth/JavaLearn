@@ -7,5 +7,10 @@ public class FactoryClient {
 
         document.open();
         document.close();
+
+        DocumentFactory documentFactory1 = new PdfFactory();
+        Document document1 = documentFactory1.create();
+        document1.open();
+        document1.close();
     }
 }

@@ -1,6 +1,6 @@
 package com.rainmonth.pattern.behavioral.templatemethod;
 
-public class StarBuzzTestDrive {
+public class TeaHouseClient {
 	public static void main(String[] args) {
  
 		Tea tea = new Tea();

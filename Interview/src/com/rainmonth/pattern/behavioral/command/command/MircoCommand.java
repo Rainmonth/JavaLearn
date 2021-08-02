@@ -2,8 +2,11 @@ package com.rainmonth.pattern.behavioral.command.command;
 
 import java.util.List;
 
-public class MircoCommand implements Command{
-    private List<Command> commands;
+/**
+ * 这个可以看成组合模式的一个应用，本身由多个Command组成
+ */
+public class MircoCommand implements Command {
+    private final List<Command> commands;
 
     public MircoCommand(List commands) {
         this.commands = commands;

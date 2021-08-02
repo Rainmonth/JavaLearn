@@ -29,27 +29,27 @@ public class FightMain {
         Warrior warrior = new Warrior();
         Goblin goblin = new Goblin();
         BaseballPlayer baseballPlayer = new BaseballPlayer();
-        SonGoku sonGoku = new SonGoku();
+//        SonGoku sonGoku = new SonGoku();
 
         Command knightCommand = new KnightCommand(knight);
         Command wizardCommand = new WizardCommand(wizard);
         Command warriorCommand = new WarriorCommand(warrior);
         Command goblinCommand = new GoblinCommand(goblin);
         Command baseballPlayerCommand = new BaseballPlayerCommand(baseballPlayer);
-        Command sonGoKuCommand = new SonGokuCommand(sonGoku);
+//        Command sonGoKuCommand = new SonGokuCommand(sonGoku);
         
-        List<Command> commandList= new ArrayList<Command>();
-        commandList.add(sonGoKuCommand);
-        commandList.add(baseballPlayerCommand);
-        Command mircoCommand = new MircoCommand(commandList);
+//        List<Command> commandList= new ArrayList<Command>();
+//        commandList.add(sonGoKuCommand);
+//        commandList.add(baseballPlayerCommand);
+//        Command mircoCommand = new MircoCommand(commandList);
 
         remoteControl.addCommand(knightCommand);
         remoteControl.addCommand(wizardCommand);
         remoteControl.addCommand(warriorCommand);
         remoteControl.addCommand(goblinCommand);
         remoteControl.addCommand(baseballPlayerCommand);
-        remoteControl.addCommand(sonGoKuCommand);
-        remoteControl.addCommand(mircoCommand);
+//        remoteControl.addCommand(sonGoKuCommand);
+//        remoteControl.addCommand(mircoCommand);
 
         System.out.println(remoteControl);
 
