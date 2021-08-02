@@ -8,6 +8,9 @@ public class NameRepository implements Container {
         return new NameIterator();
     }
 
+    /**
+     * 迭代器实现
+     */
     private class NameIterator implements Iterator {
 
         int index;
