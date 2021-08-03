@@ -1,5 +1,8 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 鼠标
+ */
 public class Mouse implements ComputerPart {
 
     @Override

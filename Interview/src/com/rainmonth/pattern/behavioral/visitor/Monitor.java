@@ -1,5 +1,8 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 显示器
+ */
 public class Monitor implements ComputerPart {
 
     @Override

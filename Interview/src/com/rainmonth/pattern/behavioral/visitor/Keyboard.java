@@ -1,5 +1,8 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 键盘
+ */
 public class Keyboard implements ComputerPart {
 
     @Override

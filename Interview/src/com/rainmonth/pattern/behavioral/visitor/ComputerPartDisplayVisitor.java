@@ -1,5 +1,8 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 整体访问者
+ */
 public class ComputerPartDisplayVisitor implements ComputerPartVisitor {
 
     @Override

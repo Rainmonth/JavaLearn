@@ -1,6 +1,10 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 定义元素接口
+ */
 public interface ComputerPart {
-    public void accept(ComputerPartVisitor computerPartVisitor);
-    public void accept(UserInputVisitor userInputVisitor);
+    void accept(ComputerPartVisitor computerPartVisitor);
+
+    void accept(UserInputVisitor userInputVisitor);
 }

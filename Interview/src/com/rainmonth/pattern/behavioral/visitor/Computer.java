@@ -1,5 +1,8 @@
 package com.rainmonth.pattern.behavioral.visitor;
 
+/**
+ * 电脑（结构固定的元素对象）
+ */
 public class Computer implements ComputerPart {
 
     ComputerPart[] parts;
