@@ -1,6 +1,8 @@
 package com.rainmonth.pattern.behavioral.memento;
 
-// Originator
+/**
+ * 需要备忘的对象
+ */
 public class Application {
 	private String state = "default setting";
 

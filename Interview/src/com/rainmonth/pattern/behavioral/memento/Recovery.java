@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-// Caretaker
+/**
+ * 备忘录管理对象，可以读取或者添加备忘录
+ */
 public class Recovery {
 	private List<Backup> backups = new ArrayList<Backup>();
 
