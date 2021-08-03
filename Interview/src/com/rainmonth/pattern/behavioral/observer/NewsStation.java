@@ -7,12 +7,12 @@ public class NewsStation {
         NewsData newsData = new NewsData();
         CccNewsDisplay cccNewsDisplay = new CccNewsDisplay();
         DnnNewsDisplay dnnNewsDisplay = new DnnNewsDisplay();
-        GuavaDaliyNewsDisplay guavaDaliyNewsDisplay = new GuavaDaliyNewsDisplay();
+        GuavaDailyNewsDisplay guavaDailyNewsDisplay = new GuavaDailyNewsDisplay();
         YahuNewsDisplay yahuNewsDisplay = new YahuNewsDisplay();
 
         newsData.registerObserver(cccNewsDisplay);
         newsData.registerObserver(dnnNewsDisplay);
-        newsData.registerObserver(guavaDaliyNewsDisplay);
+        newsData.registerObserver(guavaDailyNewsDisplay);
         newsData.registerObserver(yahuNewsDisplay);
 
         newsData.setHeadlineNews("'Big objects found' in AirAsia hunt");

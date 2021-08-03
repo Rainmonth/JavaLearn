@@ -4,6 +4,9 @@ package com.rainmonth.pattern.behavioral.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 真正的被观察者
+ */
 public class NewsData implements Subject {
     private String headlineNews;
     private String sportsNews;

@@ -1,6 +1,9 @@
 
 package com.rainmonth.pattern.behavioral.observer;
 
+/**
+ * 关注头条、体育和财经新闻，不关注娱乐新闻
+ */
 public class DnnNewsDisplay implements Observer {
     private String headlineNews;
     private String sportsNews;

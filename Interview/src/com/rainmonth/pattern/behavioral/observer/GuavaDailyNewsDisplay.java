@@ -1,7 +1,10 @@
 
 package com.rainmonth.pattern.behavioral.observer;
 
-public class GuavaDaliyNewsDisplay implements Observer {
+/**
+ * 只关注娱乐新闻
+ */
+public class GuavaDailyNewsDisplay implements Observer {
     private String entertainmentNews;
 
     @Override
@@ -11,6 +14,6 @@ public class GuavaDaliyNewsDisplay implements Observer {
     }
 
     public void display() {
-        System.out.println("GuavaDaliy entertainmentNews: " + entertainmentNews);
+        System.out.println("GuavaDaily entertainmentNews: " + entertainmentNews);
     }
 }

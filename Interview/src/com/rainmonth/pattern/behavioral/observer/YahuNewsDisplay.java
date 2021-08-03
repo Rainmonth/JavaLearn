@@ -1,6 +1,9 @@
 
 package com.rainmonth.pattern.behavioral.observer;
 
+/**
+ * 关注体育和头条
+ */
 public class YahuNewsDisplay implements Observer {
     private String headlineNews;
     private String sportsNews;

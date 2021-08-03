@@ -1,6 +1,9 @@
 
 package com.rainmonth.pattern.behavioral.observer;
 
+/**
+ * 关注头条、体育和娱乐新闻，不关注财经新闻
+ */
 public class CccNewsDisplay implements Observer {
     private String headlineNews;
     private String sportsNews;
