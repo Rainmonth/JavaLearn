@@ -2,8 +2,11 @@ package com.rainmonth.pattern.behavioral.interpreter.parser;
 
 import com.rainmonth.pattern.behavioral.interpreter.InterpreterException;
 
+/**
+ * 定义符号（空格、数字、加、乘、变量、终止符）
+ */
 public class Token {
-	public static enum TokenType {
+	public enum TokenType {
 		SPACE,
 		NUMBER,
 		ADD,

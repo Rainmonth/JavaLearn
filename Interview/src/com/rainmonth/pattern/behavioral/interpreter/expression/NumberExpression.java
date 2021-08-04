@@ -2,22 +2,25 @@ package com.rainmonth.pattern.behavioral.interpreter.expression;
 
 import java.util.Map;
 
+/**
+ * 数字解释器
+ */
 public class NumberExpression implements Expression {
-	
-	private final double value;
-	
-	public NumberExpression(double value) {
-		this.value = value;
-	}
 
-	@Override
-	public double interpret(Map<String, Double> context) {
-		return value;
-	}
+    private final double value;
 
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
+    public NumberExpression(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public double interpret(Map<String, Double> context) {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
 
 }

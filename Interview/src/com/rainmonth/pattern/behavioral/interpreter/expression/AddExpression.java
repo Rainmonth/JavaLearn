@@ -4,6 +4,9 @@ import com.rainmonth.pattern.behavioral.interpreter.InterpreterException;
 
 import java.util.Map;
 
+/**
+ * 加法解释器
+ */
 public class AddExpression implements Expression {
 
 	private final Expression leftExpression; 

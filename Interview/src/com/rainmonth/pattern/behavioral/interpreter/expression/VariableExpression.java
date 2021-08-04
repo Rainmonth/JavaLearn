@@ -4,6 +4,9 @@ import com.rainmonth.pattern.behavioral.interpreter.InterpreterException;
 
 import java.util.Map;
 
+/**
+ * 变量解释器实现
+ */
 public class VariableExpression implements Expression {
 
 	private final String name;

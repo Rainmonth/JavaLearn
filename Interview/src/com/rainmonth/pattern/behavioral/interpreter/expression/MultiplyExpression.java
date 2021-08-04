@@ -4,6 +4,9 @@ import com.rainmonth.pattern.behavioral.interpreter.InterpreterException;
 
 import java.util.Map;
 
+/**
+ * 乘法解释器实现
+ */
 public class MultiplyExpression implements Expression {
 
 	private final Expression leftExpression; 
