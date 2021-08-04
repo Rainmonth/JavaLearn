@@ -1,7 +1,7 @@
 package com.rainmonth.pattern.behavioral.state;
 
 /**
- * Created by karenlin on 2015/4/14.
+ * 暂停状态
  */
 public class TVStopState implements State {
 	@Override
