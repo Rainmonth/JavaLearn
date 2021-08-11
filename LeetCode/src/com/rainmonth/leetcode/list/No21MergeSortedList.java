@@ -19,15 +19,15 @@ public class No21MergeSortedList {
 
         System.out.println();
         System.out.print("合并后结果:");
-//        NodeHelper.printRightNodeList(new Solution1().mergeTwoSortedList(root1, root2));
-        NodeHelper.printRightNodeList(new Solution2().mergeTwoSortedList2(root1, root2));
+        NodeHelper.printRightNodeList(new No61Solution1().mergeTwoSortedList(root1, root2));
+        NodeHelper.printRightNodeList(new No61Solution2().mergeTwoSortedList2(root1, root2));
     }
 }
 
 /**
  * 递归法，可以看成 头结点较小的链表的剩余部分和另一个链表merge的过程
  */
-class Solution1 {
+class No61Solution1 {
     public ListNode<Integer> mergeTwoSortedList(ListNode<Integer> root1, ListNode<Integer> root2) {
         if (root1 == null) {
             return root2;
@@ -50,7 +50,7 @@ class Solution1 {
 /**
  * 迭代法
  */
-class Solution2 {
+class No61Solution2 {
     public ListNode<Integer> mergeTwoSortedList2(ListNode<Integer> root1, ListNode<Integer> root2) {
         ListNode<Integer> preHead = new ListNode<>(-1);
         ListNode<Integer> pre = preHead;
