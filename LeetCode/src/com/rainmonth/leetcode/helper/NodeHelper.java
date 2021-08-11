@@ -1,5 +1,6 @@
 package com.rainmonth.leetcode.helper;
 
+import java.util.List;
 import java.util.Random;
 
 public class NodeHelper {
@@ -84,6 +85,29 @@ public class NodeHelper {
 
         return head;
     }
+
+
+    /**
+     * 根据给定的 数值生成 链表
+     * @param values 给定的一组数值
+     * @return 链表头结点
+     */
+    public static ListNode<Integer> generateListWithGivenValues(int... values) {
+        ListNode<Integer> head = new ListNode<Integer>();
+        ListNode<Integer> temp = head;
+        for (int i = 0; i < values.length; i++) {
+            if (i == 0) {
+                temp.data = values[i];
+                temp.setIndex(i);
+            } else {
+                temp.next = new ListNode<>(values[i]);
+                temp.next.setIndex(i);
+                temp = temp.next;
+            }
+        }
+        return head;
+    }
+
 
     /**
      * 打印链表
