@@ -4,11 +4,11 @@ import java.util.Random;
 import java.util.concurrent.*;
 
 /**
- * 1. 如何让两个线程依次执行
- * 2. 如何让两个线程按照指定方式有序交叉执行
- * 3. 四个线程A、B、C、D，其中D要等到A B C全部执行完成后才能执行，而且A B C 是同步运行的
- * 4. 三个运动员各自准备，等到三个人都准备好了，再一起跑
- * 5. 子线程完成某个任务后，把得到的结果回传给主线程
+ * 1. 如何让两个线程依次执行（join的使用）
+ * 2. 如何让两个线程按照指定方式有序交叉执行（锁的使用，Object.wait()、Object.notify()）
+ * 3. 四个线程A、B、C、D，其中D要等到A B C全部执行完成后才能执行，而且A B C 是同步运行的（CountDownLatch的使用）
+ * 4. 三个运动员各自准备，等到三个人都准备好了，再一起跑（CyclicBarrier的使用）
+ * 5. 子线程完成某个任务后，把得到的结果回传给主线程（Callable、FutureTask的使用）
  * @author randy
  * @date 2021/8/28 11:21 上午
  */
