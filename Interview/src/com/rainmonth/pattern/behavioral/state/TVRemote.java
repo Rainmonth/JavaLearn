@@ -1,7 +1,7 @@
 package com.rainmonth.pattern.behavioral.state;
 
 /**
- * Created by karenlin on 2015/4/14.
+ * 状态模式Client
  */
 public class TVRemote {
 	public static void main(String[] args) {

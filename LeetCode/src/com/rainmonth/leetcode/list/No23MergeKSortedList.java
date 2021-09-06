@@ -5,5 +5,5 @@ package com.rainmonth.leetcode.list;
  * @author randy
  * @date 2021/6/29 9:24 上午
  */
-public class No23 {
+public class No23MergeKSortedList {
 }
