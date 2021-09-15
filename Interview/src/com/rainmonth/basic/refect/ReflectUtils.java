@@ -1,5 +1,6 @@
 package com.rainmonth.basic.refect;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -9,11 +10,36 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * {@link #listObjFields(Object)} 获取对象 Field 列表
- * {@link #getFieldByName(Object, String)}{@link #getFieldByName(Class, String)} 根据名称获取Field
- * {@link}
- * {@link}
- * {@link}
+ * 获取对象 Field 列表
+ * <ul>
+ *     <li>{@link #listField(Object)}</li>
+ *     <li>{@link #listField(Object, boolean)} </li>
+ *     <li>{@link #listField(Class, boolean)}</li>
+ * </ul>
+ * 根据名称获取Field
+ * <ul>
+ *     <li>{@link #getField(Object, String)}</li>
+ *     <li>{@link #getField(Class, String)}</li>
+ * </ul>
+ * 设置Field的值
+ * <ul>
+ *     <li>{@link #setField(Object, String, Object)}</li>
+ *     <li>{@link #setStaticField(Object, String, Object)}</li>
+ * </ul>
+ * 根据方法名获取方法
+ * <ul>
+ *     <li>{@link #getMethod(Class, String, Class[])}</li>
+ *     <li>{@link #getDeclaredMethod(Class, String, Class[])}</li>
+ * </ul>
+ * 获取构造方法、调用构造方法
+ * <ul>
+ *     <li>{@link #getConstructor(Class, Class[])}</li>
+ *     <li>{@link #invokeConstructor(Class, Object[], Class[])}</li>
+ * </ul>
+ * 创建对象实例
+ * <ul>
+ * <li>{@link #newInstance(Class)}</li>
+ * </ul>
  *
  * @author RandyZhang
  * @date 2021/9/3 3:11 下午
@@ -25,8 +51,8 @@ public class ReflectUtils {
      * @param object 对象
      * @return object 的Field列表
      */
-    public static List<Field> listObjFields(Object object) {
-        return listObjFields(object.getClass(), true);
+    public static List<Field> listField(Object object) {
+        return listField(object.getClass(), true);
     }
 
     /**
@@ -36,8 +62,8 @@ public class ReflectUtils {
      * @param includeSuper 是否包含父类的Field列表
      * @return object 的Field列表
      */
-    public static List<Field> listObjFields(Object object, boolean includeSuper) {
-        return listObjFields(object.getClass(), includeSuper);
+    public static List<Field> listField(Object object, boolean includeSuper) {
+        return listField(object.getClass(), includeSuper);
     }
 
     /**
@@ -47,7 +73,7 @@ public class ReflectUtils {
      * @param includeSuper 是否包含父类的Field列表
      * @return class 的Field列表
      */
-    public static List<Field> listObjFields(Class<?> clazz, boolean includeSuper) {
+    public static List<Field> listField(Class<?> clazz, boolean includeSuper) {
         List<Field> fieldList = new ArrayList<>();
         try {
             Field[] fields = clazz.getDeclaredFields();
@@ -55,7 +81,7 @@ public class ReflectUtils {
             fieldList.addAll(Arrays.asList(fields));
             if (includeSuper) {
                 if (clazz.getSuperclass() != null) {
-                    fieldList.addAll(listObjFields(clazz.getSuperclass(), true));
+                    fieldList.addAll(listField(clazz.getSuperclass(), true));
                 }
             }
         } catch (Exception e) {
@@ -64,11 +90,11 @@ public class ReflectUtils {
         return fieldList;
     }
 
-    public static Field getFieldByName(Object object, String fieldName) {
-        return getFieldByName(object.getClass(), fieldName);
+    public static Field getField(Object object, String fieldName) {
+        return getField(object.getClass(), fieldName);
     }
 
-    public static Field getFieldByName(Class<?> clazz, String fieldName) {
+    public static Field getField(Class<?> clazz, String fieldName) {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             if (field.getName().equals(fieldName)) {
@@ -76,9 +102,21 @@ public class ReflectUtils {
             }
         }
         if (clazz.getSuperclass() != null) {
-            return getFieldByName(clazz.getSuperclass(), fieldName);
+            return getField(clazz.getSuperclass(), fieldName);
         }
         return null;
+    }
+
+    public static void setField(Object object, String fieldName, Object fieldNewValue) {
+        Field field = getField(object, fieldName);
+        try {
+            if (field != null) {
+                field.setAccessible(true);
+                field.set(object, fieldNewValue);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Field getDeclaredField(Class<?> clazz, String fieldName) {
@@ -91,7 +129,38 @@ public class ReflectUtils {
         return field;
     }
 
-    public static Method getMethodByNameAndArgs(Class<?> clazz, String methodName, Class<?>... args) {
+    public static <R> R getStaticField(Object object, String fieldName) {
+        return getStaticField(object.getClass(), fieldName);
+    }
+
+    public static <R> R getStaticField(Class<?> clazz, String fieldName) {
+        try {
+            Field field = clazz.getDeclaredField(fieldName);
+            makeFieldVeryAccessible(field);
+            return (R) field.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static void makeFieldVeryAccessible(Field field) {
+        field.setAccessible(true);
+    }
+
+    public static void setStaticField(Object object, String fieldName, Object fieldNewValue) {
+        setStaticField(object.getClass(), fieldName, fieldNewValue);
+    }
+
+    public static void setStaticField(Class<?> clazz, String fieldName, Object fieldNewValue) {
+        try {
+            clazz.getDeclaredField(fieldName);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Method getMethod(Class<?> clazz, String methodName, Class<?>... args) {
         Method method = null;
         Method[] methods = clazz.getDeclaredMethods();
         try {
@@ -180,6 +249,73 @@ public class ReflectUtils {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    public Annotation[] getClassAnnotations(Class<?> clazz) {
+        try {
+            return clazz.getAnnotations();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Annotation getClassAnnotation(Class<?> clazz, Class<? extends Annotation> aClazz) {
+        try {
+            return clazz.getAnnotation(aClazz);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Annotation[] getFieldAnnotations(Class<?> clazz, String fieldName) {
+        try {
+            Field field = getField(clazz, fieldName);
+            if (field != null) {
+                return field.getAnnotations();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Annotation getFieldAnnotation(Class<?> clazz, String fieldName, Class<? extends Annotation> aClazz) {
+        try {
+            Field field = getField(clazz, fieldName);
+            if (field != null) {
+                return field.getAnnotation(aClazz);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Annotation[] getMethodAnnotations(Class<?> clazz, String methodName) {
+        try {
+            Method method = getMethod(clazz, methodName);
+            if (method != null) {
+                return method.getAnnotations();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Annotation getMethodAnnotation(Class<?> clazz, String methodName, Class<? extends Annotation> aClazz) {
+        try {
+            Method method = getMethod(clazz, methodName);
+            if (method != null) {
+                return method.getAnnotation(aClazz);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 

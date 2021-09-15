@@ -10,6 +10,8 @@ import java.util.Objects;
  */
 public class ReflectObject extends BaseObject implements ReflectInterface{
 
+    public static String test = "11";
+
     private String name = "";
 
     private long id = 0;

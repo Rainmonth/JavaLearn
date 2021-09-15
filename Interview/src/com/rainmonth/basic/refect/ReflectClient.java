@@ -31,11 +31,11 @@ public class ReflectClient {
             System.out.println("reflectObject is null");
             return;
         }
-        System.out.println("ReflectObject Fields(includeSuper=false):" + ReflectUtils.listObjFields(reflectObject));
-        System.out.println("ReflectObject Fields(includeSuper=true):" + ReflectUtils.listObjFields(reflectObject, true));
-        System.out.println("ReflectObject Fields(includeSuper=true):" + ReflectUtils.listObjFields(ReflectObject.class, true));
+        System.out.println("ReflectObject Fields(includeSuper=false):" + ReflectUtils.listField(reflectObject));
+        System.out.println("ReflectObject Fields(includeSuper=true):" + ReflectUtils.listField(reflectObject, true));
+        System.out.println("ReflectObject Fields(includeSuper=true):" + ReflectUtils.listField(ReflectObject.class, true));
 
-        Method setNameAndId = ReflectUtils.getMethodByNameAndArgs(reflectObject.getClass(), "setNameAndId",
+        Method setNameAndId = ReflectUtils.getMethod(reflectObject.getClass(), "setNameAndId",
                 String.class, long.class);
 
         Method setIdAndName = ReflectUtils.getDeclaredMethod(reflectObject.getClass(), "setIdAndName", long.class, String.class);
@@ -68,6 +68,16 @@ public class ReflectClient {
         Object[] param = new Object[]{"lisi", 10};
         ReflectObject reflectObject2 = ReflectUtils.invokeConstructor(ReflectObject.class, param, String.class, long.class);
         System.out.println(reflectObject2);
+
+
+        if (reflectObject2 == null) {
+            return;
+        }
+        System.out.println((String) ReflectUtils.getStaticField(reflectObject2, "test"));
+        System.out.println((String) ReflectUtils.getStaticField(reflectObject, "test"));
+
+        System.out.println(4>>2);
+        System.out.println(4<<2);
     }
 
 }
